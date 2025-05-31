@@ -1,0 +1,145 @@
+﻿@model OnlineHelpDesk.Models.ContactMessage
+
+<!-- Page Header Start -->
+<div class="container-fluid page-header pt-5 mb-6 wow fadeIn" data-wow-delay="0.1s">
+    <div class="container-fluid text-center pt-5">
+        <div class="row justify-content-center">
+            <div class="col-lg-7">
+                <div class="bg-white p-5">
+                    <h1 class="display-6 text-uppercase mb-3 animated slideInDown">Contact</h1>
+                    <nav aria-label="breadcrumb animated slideInDown">
+                        <ol class="breadcrumb justify-content-center mb-0">
+                            <li class="breadcrumb-item"><a asp-controller="Home" asp-action="Index">Home</a></li>
+                            <li class="breadcrumb-item"><a asp-controller="Home" asp-action="Contact">Contact</a></li>
+                            <li class="breadcrumb-item" aria-current="page">Contact</li>
+                        </ol>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Page Header End -->
+<!-- Contact Start -->
+<div class="pt-6 pb-6">
+    <div class="container-fluid appoinment py-5 wow fadeIn" data-wow-delay="0.1s">
+        <div class="container pt-5">
+            <div class="row gy-5 gx-0">
+                <div class="col-lg-6 pe-lg-5 wow fadeIn" data-wow-delay="0.3s">
+                    <h1 class="display-6 text-uppercase text-white mb-4">
+                        Have Any Query? Feel Free To Contact Us
+                    </h1>
+                    <p class="text-white mb-5 wow fadeIn" data-wow-delay="0.4s">
+                        We’re always here to help you. Whether you have a question, feedback, or need support, feel free to reach out.
+                        Our team is ready to assist you anytime — 24/7.
+                    </p>
+                    <div class="d-flex align-items-start wow fadeIn" data-wow-delay="0.5s">
+                        <div class="btn-lg-square bg-white">
+                            <i class="bi bi-envelope-at text-dark fs-3"></i>
+                        </div>
+                        <div class="ms-3">
+                            <h6 class="text-white text-uppercase">Mail Us</h6>
+                            <span class="text-white">info@example.com</span>
+                        </div>
+                    </div>
+                    <hr class="bg-body">
+                    <div class="d-flex align-items-start wow fadeIn" data-wow-delay="0.6s">
+                        <div class="btn-lg-square bg-white">
+                            <i class="bi bi-telephone text-dark fs-3"></i>
+                        </div>
+                        <div class="ms-3">
+                            <h6 class="text-white text-uppercase">Call Us</h6>
+                            <span class="text-white">+012 345 67890</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Contact Us Form Start -->
+                <div class="col-lg-6 mb-n5 wow fadeIn" data-wow-delay="0.7s">
+                    <div class="bg-white p-5">
+                        <h2 class="text-uppercase mb-4 text-center">Contact Us</h2>
+
+                        <!-- Display Success/Error messages -->
+                        @if (TempData["success"] != null)
+                        {
+                            <div class="alert alert-success">
+                                @TempData["success"]
+                            </div>
+                        }
+                        @if (TempData["error"] != null)
+                        {
+                            <div class="alert alert-danger">
+                                @TempData["error"]
+                            </div>
+                        }
+
+                        <form asp-action="Contact" method="post" class="row g-3">
+                            <div class="col-sm-6">
+                                <div class="form-floating">
+                                    <label asp-for="Name" class="form-label fw-semibold text-dark">NAME</label>
+                                    <br/>
+                                    <br/>
+                                    <input type="text" placeholder="Name" class="form-control" asp-for="Name" />
+                                    <span asp-validation-for="Name" class="form-label text-danger"></span>
+                                </div>
+                            </div>
+
+                            <div class="col-sm-6">
+                                <div class="form-floating">
+                                    <label asp-for="Email" class="form-label fw-semibold text-dark">EMAIL</label>
+                                    <br />
+                                    <br />
+                                    <input type="email" placeholder="Email" class="form-control" asp-for="Email" />
+                                    <span asp-validation-for="Email" class="form-label text-danger"></span>
+                                </div>
+                            </div>
+
+                            <div class="col-sm-6">
+                                <div class="form-floating">
+                                    <label asp-for="Mobile" class="form-label fw-semibold text-dark">MOBILE</label>
+                                    <br />
+                                    <br />
+                                    <input type="number" placeholder="Number" class="form-control" asp-for="Mobile" />
+                                    <span asp-validation-for="Mobile" class="form-label text-danger"></span>
+                                </div>
+                            </div>
+
+                            <div class="col-sm-6">
+                                <div class="form-floating">
+                                    <label asp-for="Subject" class="form-label fw-semibold text-dark">SUBJECT</label>
+                                    <br />
+                                    <br />
+                                    <input type="text" placeholder="Subject" class="form-control" asp-for="Subject" />
+                                    <span asp-validation-for="Subject" class="form-label text-danger"></span>
+                                </div>
+                            </div>
+
+                            <div class="col-12">
+                                <div class="form-floating">
+                                    <label asp-for="Message" class="form-label fw-semibold text-dark">MESSAGE</label>
+                                    <br />
+                                    <br />
+                                    <textarea asp-for="Message" class="form-control"></textarea>
+                                    <span asp-validation-for="Message" class="form-label text-danger"></span>
+                                </div>
+                            </div>
+
+                            <div class="col-12 text-center">
+                                <button class="btn btn-primary w-100 py-3" type="submit">Submit Now</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <!-- Contact Us Form End -->
+              
+            </div>
+          </div>
+    </div>
+    <!------Map------->
+    <div class="container-fluid px-0 wow fadeInUp" data-wow-delay="0.5s">
+      <iframe class="w-100 h-100" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d28947.944725460176!2d67.01201142275133!3d24.91526675694106!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3eb33fbd469d9bcd%3A0x749325c6e39952f3!2sNazimabad%2C%20Karachi%2C%20Pakistan!5e0!3m2!1sen!2s!4v1748278301388!5m2!1sen!2s" frameborder="0" style="min-height: 500px; border:0;" allowfullscreen="" aria-hidden="false"
+                tabindex="0"></iframe>
+    </div>
+    <!------Map------->
+</div>
+<!-- Contact End -->

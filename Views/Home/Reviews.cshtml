@@ -1,0 +1,79 @@
+﻿@model IEnumerable<OnlineHelpDesk.Models.Review>
+
+
+ 
+<!-- Page Header Start -->
+<div class="container-fluid page-header pt-5 mb-6 wow fadeIn" data-wow-delay="0.1s">
+    <div class="container-fluid text-center pt-5">
+        <div class="row justify-content-center">
+            <div class="col-lg-7">
+                <div class="bg-white p-5">
+                    <h1 class="display-6 text-uppercase mb-3 animated slideInDown">Reviews</h1>
+                    <nav aria-label="breadcrumb animated slideInDown">
+                        <ol class="breadcrumb justify-content-center mb-0">
+                            <li class="breadcrumb-item"><a asp-controller="Home" asp-action="Index">Home</a></li>
+                            <li class="breadcrumb-item"><a asp-controller="Home" asp-action="Reviews">Reviews</a></li>
+                            <li class="breadcrumb-item" aria-current="page">Reviews</li>
+                        </ol>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Page Header End -->
+<!-- Testimonial Start -->
+<div class="container-fluid py-5 px-4"
+     style="background: #fffef9;
+            border-top: 4px solid #d39333;
+            border-bottom: 4px solid #d39333;
+            border-radius: 15px;
+            box-shadow: 0 6px 24px rgba(0, 0, 0, 0.08);">
+     <div class="container">
+        <div class="text-center mx-auto wow fadeInUp" data-wow-delay="0.1s" style="max-width: 700px;">
+            <h1 class="display-6 text-uppercase text-dark mb-5">What They’re Saying About Our Services</h1>
+        </div>
+        <div class="row g-5 align-items-center">
+            <!-- Left Images -->
+            <div class="col-lg-5 wow fadeInUp" data-wow-delay="0.3s">
+                <div class="testimonial-img">
+                    @foreach (var review in Model.Take(4))
+                    {
+                        <div class="animated flip infinite">
+                           @*  <img class="img-fluid" src="~/uploads/@review.ImagePath" alt=""> *@
+                            <img class="img-fluid rounded shadow" src="~/uploads/@review.ImagePath" alt="">
+                        </div>
+                    }
+
+                </div>
+            </div>
+
+            <!-- Right Carousel -->
+            <div class="col-lg-7 wow fadeInUp" data-wow-delay="0.5s">
+                <div class="owl-carousel testimonial-carousel">
+                    @foreach (var review in Model)
+                    {
+                        <div class="testimonial-item">
+                            <div class="d-flex align-items-center mb-4">
+                                <img class="img-fluid rounded-circle" src="~/uploads/@review.ImagePath" alt="">
+                                <div class="ms-3">
+                                    <div class="mb-2">
+                                        @for (int i = 0; i < review.Rating; i++)
+                                        {
+                                            <i class="fas fa-star text-warning me-1"></i>
+                                        }
+                                    </div>
+                                    <h5 class="text-uppercase">@review.ClientName</h5>
+                                    <span>@review.Profession</span>
+                                </div>
+                            </div>
+                            <p class="fs-5">@review.Message</p>
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Testimonial End -->
+

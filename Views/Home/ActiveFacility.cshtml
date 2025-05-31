@@ -1,0 +1,84 @@
+﻿@model List<OnlineHelpDesk.Models.Facility>
+
+@{
+    ViewData["Title"] = "Facilities";
+}
+<div class="container mt-5 mb-5" style="background-color: #d39333; padding: 40px 20px; border-radius: 15px;">
+    <div class="card shadow-lg border-dark" style="border-width: 3px;">
+        <div class="card-header bg-dark text-white text-center fw-bold text-uppercase tracking-wide" style="letter-spacing: 3px; text-shadow: 2px 3px 4px rgba(0, 0, 0, 0.4);">
+            Active Facilities
+        </div>
+        <div class="card-body">
+
+            @if (Model != null && Model.Count > 0)
+            {
+                <div class="table-responsive">
+                    <table class="table table-bordered table-striped text-center align-middle">
+                        <thead class="table-dark">
+                            <tr>
+                                <th>Facility Name</th>
+                                <th>Description</th>
+                                <th>Is Active</th>
+                                <th>Request Status</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var facility in Model)
+                            {
+                                <tr>
+                                    <td>@facility.FacilityName</td>
+                                    <td>@facility.Description</td>
+                                    <td>
+                                        @if (facility.IsActive)
+                                        {
+                                            <span class="badge bg-success">Yes</span>
+                                        }
+                                        else
+                                        {
+                                            <span class="badge bg-danger">No</span>
+                                        }
+                                    </td>
+                                    <td>
+                                        @if (facility.IsActive != null)
+                                        {
+                                           @*  <span class="badge bg-success">Available</span> *@
+                                            <span class="badge bg-dark px-3 py-2 fw-semibold shadow-lg">
+                                                ✅ Available
+                                            </span>
+                                        }
+                                        else
+                                        {
+                                           @*  <span class="badge bg-warning text-dark">Request Pending</span> *@
+                                            <span class="badge bg-warning text-dark px-3 py-2 fw-semibold shadow-lg">
+                                                ⏳ Request Pending
+                                            </span>
+                                        }
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="mt-4 text-center">
+                    <h5 class="fw-bold">Want to request a new facility?</h5>
+                    <a href="@Url.Action("RequestFacility", "Home")" class="btn btn-primary mt-2 fw-bold">Request a New Facility</a>
+                </div>
+            }
+            else
+            {
+                <p class="text-center fw-bold text-muted mt-3">No active facilities available at the moment.</p>
+            }
+
+            @if (TempData["Success"] != null)
+            {
+                <div class="alert alert-success mt-4 text-center">
+                    @TempData["Success"]
+                </div>
+            }
+
+        </div>
+    </div>
+</div>
+
+

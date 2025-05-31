@@ -1,0 +1,123 @@
+﻿
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="container-fluid w-100 pt-5 pb-1" style="background: linear-gradient(to right,#d39333, #fff6e9,#d39333, #fff6e9, #d39333); min-height: calc(92vh - 92px);">
+  
+    <h1 class="mb-5 text-center fw-bold" style="font-size: 3.5rem; color: #000; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; letter-spacing: 3px; text-transform: uppercase; text-shadow:
+  -1px -1px 0 #fff,
+   1px -1px 0 #fff,
+  -1px  1px 0 #fff,
+   1px  1px 0 #fff,
+   0px  2px 0 #fff;">
+        Admin Dashboard
+    </h1>
+
+
+    <div class="row justify-content-center g-4">
+        <!-- Facilities Card -->
+        <div class="col-md-4">
+            <div class="card elegant-card border-start border-5 border-brand shadow rounded-4">
+                <div class="card-body text-center">
+                    <i class="bi bi-gear-fill icon-brand mb-3" style="text-shadow: 2px 4px 5px rgba(0, 0, 0, 0.4);"></i>
+                    <h5 class="card-title fw-bold text-uppercase text-black tracking-wide" style="letter-spacing: 1px; font-size: 1.15rem;">FACILITIES</h5>
+                    <p class="display-6 fw-bold text-brand mb-4" style="text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.4);">@ViewBag.FacilityCount</p>
+                    <a href="@Url.Action("Facilities", "Admin")" class="btn btn-brand rounded-pill px-4" style="text-shadow: 1px 2px 3px rgba(0, 0, 0, 0.4);">Manage</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Users Card -->
+        <div class="col-md-4">
+            <div class="card elegant-card border-start border-5 border-brand shadow rounded-4">
+                <div class="card-body text-center">
+                    <i class="bi bi-people-fill icon-brand mb-3" style="text-shadow: 2px 4px 5px rgba(0, 0, 0, 0.4);"></i>
+                    <h5 class="card-title fw-bold text-uppercase text-black tracking-wide" style="letter-spacing: 1px; font-size: 1.15rem;">USERS</h5>
+                    <p class="display-6 fw-bold text-brand mb-4" style="text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.4);">@ViewBag.UserCount</p>
+                    <a href="@Url.Action("Users", "Admin")" class="btn btn-brand rounded-pill px-4" style="text-shadow: 1px 2px 3px rgba(0, 0, 0, 0.4);">Manage</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Messages Card -->
+        <div class="col-md-4">
+            <div class="card elegant-card border-start border-5 border-brand shadow rounded-4">
+                <div class="card-body text-center">
+                    <i class="bi bi-envelope-fill icon-brand mb-3" style="text-shadow: 2px 4px 5px rgba(0, 0, 0, 0.4);"></i>
+                    <h5 class="card-title fw-bold text-uppercase text-black tracking-wide" style="letter-spacing: 1px; font-size: 1.15rem;">MESSAGES</h5>
+                    <p class="display-6 fw-bold text-brand mb-4" style="text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.4);">@ViewBag.ContactCount</p>
+                    <a href="@Url.Action("ContactList", "Admin")" class="btn btn-brand rounded-pill px-4" style="text-shadow: 1px 2px 3px rgba(0, 0, 0, 0.4);">View</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<style>
+    :root {
+        --brand-color: #d39333;
+    }
+
+    .admin-panel-title {
+        font-size: 3rem;
+        color: #000;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        position: relative;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+    }
+
+        .admin-panel-title::after {
+            content: '';
+            position: absolute;
+            left: 50%;
+            bottom: -12px;
+            width: 90px;
+            height: 4px;
+            background-color: var(--brand-color);
+            transform: translateX(-50%);
+            border-radius: 10px;
+        }
+
+    .elegant-card {
+        background-color: #fff;
+        border: none;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+        .elegant-card:hover {
+            transform: translateY(-12px);
+            box-shadow: 0 20px 30px rgba(0, 0, 0, 0.1);
+        }
+
+    .btn-brand {
+        background-color: var(--brand-color);
+        color: #fff;
+        font-weight: 500;
+        border: none;
+        transition: all 0.3s ease-in-out;
+    }
+
+        .btn-brand:hover {
+            background-color: #a76a20;
+            color: #fff;
+        }
+
+    .text-brand {
+        color: var(--brand-color);
+    }
+
+    .border-brand {
+        border-color: var(--brand-color) !important;
+    }
+
+    .icon-brand {
+        font-size: 2.5rem;
+        color: var(--brand-color);
+    }
+</style>

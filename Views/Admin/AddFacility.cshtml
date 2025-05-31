@@ -1,0 +1,48 @@
+﻿@model OnlineHelpDesk.Models.Facility
+
+@{
+    ViewData["Title"] = "Add Facility";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+
+<!-- Outer background wrapper -->
+<section class="signin-page account d-flex align-items-center justify-content-center pt-4 pb-4" style="background-color: #d39333; min-height: 80vh;">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                <div class="block p-4 rounded border border-5 border-dark shadow-lg bg-white">
+
+                    <h3 class="text-center text-dark fw-semibold text-uppercase mb-4" style="letter-spacing: 1px;">
+                        Add New Facility
+                    </h3>
+
+
+                    <form asp-action="AddFacility" method="post">
+                        <div class="form-group">
+                            <label asp-for="FacilityName" style="color: black; font-weight: 600;"></label>
+                            <input asp-for="FacilityName" class="form-control" />
+                            <span asp-validation-for="FacilityName" class="text-danger"></span>
+                        </div>
+
+                        <div class="form-group mt-3">
+                            <label asp-for="Description" style="color: black; font-weight: 600;"></label>
+                            <textarea asp-for="Description" class="form-control"></textarea>
+                        </div>
+
+                        <div class="form-group form-check mt-3">
+                            <input asp-for="IsActive" type="checkbox" class="form-check-input" />
+                            <label asp-for="IsActive" class="form-check-label" style="color: black; font-weight: 600;"></label>
+                        </div>
+
+                        <div class="mt-4">
+                            <button type="submit" class="btn btn-primary">Save</button>
+                            <a asp-action="Facilities" class="btn btn-dark ms-2">Cancel</a>
+                        </div>
+                    </form>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

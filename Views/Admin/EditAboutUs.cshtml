@@ -1,0 +1,46 @@
+﻿@model Aboutu
+@{
+    ViewData["Title"] = "Aboutus";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div style="background-color: #d39333; min-height: 80vh;; padding: 60px 0;">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-7 col-lg-6">
+                <div class="card shadow-lg border-3 border-dark rounded-4">
+                    <div class="card-header bg-dark text-center text-white fw-bold rounded-top-4">
+                        Edit About Us Content
+                    </div>
+                    <div class="card-body" style="background-color: #f8f9fa; border-bottom-left-radius: 0.75rem; border-bottom-right-radius: 0.75rem;">
+                        <form asp-action="EditAboutUs" method="post" enctype="multipart/form-data">
+                            <input type="hidden" asp-for="Id" />
+
+                            <div class="form-group mb-4">
+                                <label class="form-label fw-semibold text-dark">Content</label>
+                                <textarea asp-for="Content" class="form-control shadow-sm" rows="5" placeholder="Update content..."></textarea>
+                            </div>
+
+                            <div class="form-group mb-4">
+                                <label class="form-label fw-semibold text-dark">Upload New Image (optional)</label>
+                                <input type="file" name="image" class="form-control shadow-sm" />
+                            </div>
+
+                            @if (!string.IsNullOrEmpty(Model.ImagePath))
+                            {
+                                <div class="mb-4">
+                                    <label class="form-label fw-semibold text-dark">Current Image</label><br />
+                                    <img src="@Model.ImagePath" width="120" class="img-thumbnail border border-dark shadow-sm" />
+                                </div>
+                            }
+
+                            <div class="d-grid">
+                                <button type="submit" class="btn btn-dark fw-semibold shadow-sm">Update</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

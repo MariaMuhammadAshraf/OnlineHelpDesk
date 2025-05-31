@@ -1,0 +1,44 @@
+﻿@model OnlineHelpDesk.Models.Facility
+
+@{
+    ViewData["Title"] = "Request a New Facility";
+}
+
+
+
+<div class="container mt-5 mb-5" style="background-color: #d39333; padding: 50px 20px; border-radius: 15px;">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card shadow-lg" style="border: 3px solid #343a40;">
+                <div class="card-header bg-primary text-white text-center fw-bold">
+                    Request a New Facility
+                </div>
+                <div class="card-body">
+                    @using (Html.BeginForm())
+                    {
+                        @Html.AntiForgeryToken()
+
+                        <div class="form-group mb-3">
+                            @Html.LabelFor(m => m.FacilityName, new { @class = "form-label fw-bold text-dark" })
+                            @Html.TextBoxFor(m => m.FacilityName, new { @class = "form-control", placeholder = "Enter facility name" })
+                            @Html.ValidationMessageFor(m => m.FacilityName, "", new { @class = "text-danger" })
+                        </div>
+
+                        <div class="form-group mb-4">
+                            @Html.LabelFor(m => m.Description, new { @class = "form-label fw-bold text-dark" })
+                            @Html.TextAreaFor(m => m.Description, 5, 0, new { @class = "form-control", placeholder = "Why do you need this facility?" })
+                            @Html.ValidationMessageFor(m => m.Description, "", new { @class = "text-danger" })
+                        </div>
+
+                        <div class="d-grid">
+                            <button type="submit" class="btn btn-primary fw-bold">Submit Request</button>
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+

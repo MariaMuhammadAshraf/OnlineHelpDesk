@@ -1,0 +1,34 @@
+﻿@model Aboutu
+@{
+    ViewData["Title"] = "Aboutus";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+<div style="background-color: #d39333; min-height: 80vh; padding: 60px 0;">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-7 col-lg-6">
+                <div class="card shadow-lg border-3 border-dark rounded-4">
+                    <div class="card-header text-center bg-dark text-white rounded-top-4">
+                        <h4 class="fw-bold mb-0 text-white">Add About Us Content</h4>
+                    </div>
+                    <div class="card-body" style="background-color: #f8f9fa; border-bottom-left-radius: 0.75rem; border-bottom-right-radius: 0.75rem;">
+                        <form asp-action="AddAboutUs" method="post" enctype="multipart/form-data">
+                            <div class="form-group mb-4">
+                                <label class="form-label fw-semibold text-dark">Content</label>
+                                <textarea asp-for="Content" class="form-control shadow-sm" rows="5" placeholder="Enter about us content..."></textarea>
+                            </div>
+                            <div class="form-group mb-4">
+                                <label class="form-label fw-semibold text-dark">Image (optional)</label>
+                                <input type="file" name="image" class="form-control shadow-sm" />
+                            </div>
+                            <div class="d-grid">
+                                <button type="submit" class="btn btn-dark fw-semibold shadow-sm">Save</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
