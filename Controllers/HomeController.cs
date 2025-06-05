@@ -255,46 +255,47 @@ namespace OnlineHelpDesk.Controllers
         // }
 
 
-         [HttpPost]
- public IActionResult Login(UserRegistration USERVALIDATION)
- {
-     if (!ModelState.IsValid)
+     [HttpPost]
+     public IActionResult Login(UserRegistration USERVALIDATION)
      {
-         var uservalidity = db.UserRegistrations
-             .Where(user => user.UserEmail == USERVALIDATION.UserEmail &&
-                            user.UserPassword == USERVALIDATION.UserPassword)
-             .ToList();
+      if (!ModelState.IsValid)
+      {
+          var uservalidity = db.UserRegistrations
+              .Where(user => user.UserEmail == USERVALIDATION.UserEmail &&
+                             user.UserPassword == USERVALIDATION.UserPassword)
+              .ToList();
 
-         if (uservalidity.Count > 0)
-         {
-             if (uservalidity[0].UserRole == "customer")
-             {
-                 CONTX.HttpContext.Session.SetString("UserName", uservalidity[0].UserName);
-                 CONTX.HttpContext.Session.SetString("UserEmail", uservalidity[0].UserEmail);
-                 CONTX.HttpContext.Session.SetString("UserRole", uservalidity[0].UserRole);
+          if (uservalidity.Count > 0)
+          {
+              if (uservalidity[0].UserRole == "customer")
+              {
+                  CONTX.HttpContext.Session.SetString("UserName", uservalidity[0].UserName);
+                  CONTX.HttpContext.Session.SetString("UserEmail", uservalidity[0].UserEmail);
+                  CONTX.HttpContext.Session.SetString("UserRole", uservalidity[0].UserRole);
 
-                 return RedirectToAction("Index", "Home");
-             }
-             else if (uservalidity[0].UserRole == "ADMIN")
-             {
-                 CONTX.HttpContext.Session.SetString("UserName", uservalidity[0].UserName);
-                 CONTX.HttpContext.Session.SetString("UserEmail", uservalidity[0].UserEmail);
-                 CONTX.HttpContext.Session.SetString("UserRole", uservalidity[0].UserRole);
+                  return RedirectToAction("Index", "Home");
+              }
+              else if (uservalidity[0].UserRole == "ADMIN")
+              {
+                  CONTX.HttpContext.Session.SetString("UserName", uservalidity[0].UserName);
+                  CONTX.HttpContext.Session.SetString("UserEmail", uservalidity[0].UserEmail);
+                  CONTX.HttpContext.Session.SetString("UserRole", uservalidity[0].UserRole);
 
-                 return RedirectToAction("Index", "Admin");
-             }
-         }
-         else
-         {
-             TempData["LoginError"] = "Invalid email or password!";
-             return RedirectToAction("Login");
-         }
-     }
+                  return RedirectToAction("Index", "Admin");
+              }
+          }
+          else
+          {
+              TempData["LoginError"] = "Invalid email or password!";
+              return RedirectToAction("Login");
+          }
+      }
 
-     TempData["LoginError"] = "Please enter valid details!";
-     return RedirectToAction("Login");
- }
-        
+      TempData["LoginError"] = "Please enter valid details!";
+      return RedirectToAction("Login");
+  }
+
+
 
 
 
